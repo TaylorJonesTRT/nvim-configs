@@ -7,12 +7,16 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use ('wbthomason/packer.nvim')
 
+
+  use('nvim-lua/plenary.nvim')
+
   use {
       'nvim-telescope/telescope.nvim', tag = '0.1.1',
       -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
   use({ 'lunarvim/Onedarker', as = 'Onedarker' })
 
@@ -115,24 +119,31 @@ use {
   end
 }
 
--- Lua
+use('nvim-lua/popup.nvim')
+
+use('cljoly/telescope-repo.nvim')
+
+-- use {
+-- 	"windwp/nvim-autopairs",
+--     config = function() require("nvim-autopairs").setup {} end
+-- }
+
 use {
-  "ahmedkhalf/project.nvim",
-  config = function()
-    require("project_nvim").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      require("nvim-tree").setup({
-          sync_root_with_cwd = true,
-          respect_buf_cwd = true,
-          update_focused_file = {
-              enable = true,
-              update_root = true
-          },
-      }),
-    }
-  end
+    'aaditeynair/conduct.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    cmd = {
+        "ConductNewProject",
+        "ConductLoadProject",
+        "ConductLoadLastProject",
+        "ConductLoadProjectConfig",
+        "ConductReloadProjectConfig",
+        "ConductDeleteProject",
+        "ConductRenameProject",
+        "ConductProjectNewSession",
+        "ConductProjectLoadSession",
+        "ConductProjectDeleteSession",
+        "ConductProjectRenameSession",
+    },
 }
 
 end)

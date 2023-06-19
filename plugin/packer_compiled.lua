@@ -106,6 +106,11 @@ _G.packer_plugins = {
     path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["conduct.nvim"] = {
+    loaded = true,
+    path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/conduct.nvim",
+    url = "https://github.com/aaditeynair/conduct.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -206,16 +211,20 @@ _G.packer_plugins = {
     path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["project.nvim"] = {
-    config = { "\27LJ\2\nÆ\1\0\0\a\0\a\1\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\3\0006\3\0\0'\5\3\0B\3\2\0029\3\2\0035\5\4\0005\6\5\0=\6\6\5B\3\2\0?\3\0\0B\0\2\1K\0\1\0\24update_focused_file\1\0\2\16update_root\2\venable\2\1\0\2\23sync_root_with_cwd\2\20respect_buf_cwd\2\14nvim-tree\nsetup\17project_nvim\frequire\3€€À™\4\0" },
+  ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/project.nvim",
-    url = "https://github.com/ahmedkhalf/project.nvim"
+    path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
+  ["telescope-repo.nvim"] = {
+    loaded = true,
+    path = "/Users/taylorjones/.local/share/nvim/site/pack/packer/start/telescope-repo.nvim",
+    url = "https://github.com/cljoly/telescope-repo.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -264,10 +273,6 @@ time([[Config for alpha-nvim]], false)
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\nt\0\0\3\0\a\0\0156\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0006\0\4\0'\2\5\0B\0\2\0029\0\6\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
 time([[Config for which-key.nvim]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-try_loadstring("\27LJ\2\nÆ\1\0\0\a\0\a\1\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\3\0006\3\0\0'\5\3\0B\3\2\0029\3\2\0035\5\4\0005\6\5\0=\6\6\5B\3\2\0?\3\0\0B\0\2\1K\0\1\0\24update_focused_file\1\0\2\16update_root\2\venable\2\1\0\2\23sync_root_with_cwd\2\20respect_buf_cwd\2\14nvim-tree\nsetup\17project_nvim\frequire\3€€À™\4\0", "config", "project.nvim")
-time([[Config for project.nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
