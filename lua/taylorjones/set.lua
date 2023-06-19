@@ -19,6 +19,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
+require("bufferline").setup()
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -29,3 +30,5 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+vim.o.statusline = "%{%v:lua.require'nvim-navic'.get_location()%}"
