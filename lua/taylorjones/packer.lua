@@ -18,9 +18,9 @@ return require('packer').startup(function(use)
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-  use({ 'lunarvim/Onedarker', as = 'Onedarker' })
+  use({ 'folke/tokyonight.nvim', as = 'Tokyonight' })
 
-  vim.cmd('colorscheme Onedarker')
+  vim.cmd('colorscheme Tokyonight')
 
   use {
       'nvim-treesitter/nvim-treesitter',
@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
 
   use ('nkrkv/nvim-treesitter-rescript')
   use('nvim-treesitter/playground')
+  use('nvim-treesitter/nvim-treesitter-context')
 
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
@@ -49,32 +50,34 @@ return require('packer').startup(function(use)
           require('Comment').setup()
       end
   }
-  use {
-      'akinsho/bufferline.nvim',
-      tag = '*',
-      requires = 'nvim-tree/nvim-web-devicons'
-  }
+  -- use {
+  --     'akinsho/bufferline.nvim',
+  --     tag = '*',
+  --     requires = 'nvim-tree/nvim-web-devicons'
+  -- }
 
   use {
       'VonHeikemen/lsp-zero.nvim',
       branch = 'v2.x',
       requires = {
           -- LSP Support
-          {'neovim/nvim-lspconfig'},             -- Required
-          {                                      -- Optional
-          'williamboman/mason.nvim',
-          run = function()
-              pcall(vim.cmd, 'MasonUpdate')
-          end,
-      },
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+          {'neovim/nvim-lspconfig'},
+          {'williamboman/mason.nvim'},
+          {'williamboman/mason-lspconfig.nvim'},
 
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},
+          {'hrsh7th/cmp-buffer'},
+          {'hrsh7th/cmp-path'},
+          {'saadparwaiz1/cmp_luasnip'},
+          {'hrsh7th/cmp-nvim-lsp'},
+          {'hrsh7th/cmp-nvim-lua'},
+
+          -- Snippets
+          {'L3MON4D3/LuaSnip'},
+          {'rafamadriz/friendly-snippets'},
+      }
   }
-}
 
 use {"akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
@@ -107,43 +110,56 @@ use {
 use('lewis6991/gitsigns.nvim')
 
 use {
-  "folke/which-key.nvim",
-  config = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-    require("which-key").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
+    "folke/which-key.nvim",
+    config = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+        require("which-key").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    end
 }
 
 use('nvim-lua/popup.nvim')
 
 use('cljoly/telescope-repo.nvim')
 
--- use {
--- 	"windwp/nvim-autopairs",
---     config = function() require("nvim-autopairs").setup {} end
--- }
+use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
+
+use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
 
 use {
     'aaditeynair/conduct.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    cmd = {
-        "ConductNewProject",
-        "ConductLoadProject",
-        "ConductLoadLastProject",
-        "ConductLoadProjectConfig",
-        "ConductReloadProjectConfig",
-        "ConductDeleteProject",
-        "ConductRenameProject",
-        "ConductProjectNewSession",
-        "ConductProjectLoadSession",
-        "ConductProjectDeleteSession",
-        "ConductProjectRenameSession",
-    },
+    requires = { 'nvim-lua/plenary.nvim' }
 }
+
+use({
+  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  config = function()
+    require("lsp_lines").setup()
+  end,
+})
+
+  use({
+      "folke/trouble.nvim",
+      config = function()
+          require("trouble").setup {
+              icons = false,
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+          }
+      end
+  })
+
+  use('xiyaowong/transparent.nvim')
 
 end)

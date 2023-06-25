@@ -1,3 +1,5 @@
+local opts = { buffer = 0 }
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -42,3 +44,16 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/the
 
 --telescope repo search
 vim.keymap.set("n", "<leader>pr", ":Telescope repo list<CR>")
+
+--ToggleTerm
+vim.keymap.set("n", "<leader>tth", ":ToggleTerm direction=horizontal<CR>")
+vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+
+-- Toggles between lsp-lines and virtual-text
+vim.keymap.set("", "<leader>dt", function()
+        local config = vim.diagnostic.config()
+        vim.diagnostic.config({
+            virtual_text = not config.virtual_text,
+            virtual_lines = not config.virtual_lines,
+        })
+    end, { desc = "Toggle Line Diagnostics" })

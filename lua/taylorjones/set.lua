@@ -19,7 +19,6 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
-require("bufferline").setup()
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -32,3 +31,22 @@ vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 
 vim.o.statusline = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
+-- remove virtual_text since I have lsp_lines installed
+-- vim.diagnostic.config({
+--     float = { border = "rounded" },
+-- })
+
+vim.diagnostic.config({
+    underline = true,
+    signs = true,
+    virtual_text = false,
+    float = {
+        show_header = true,
+        source = "always",
+        border = "rounded",
+        focusable = false,
+    },
+    update_in_insert = false,
+    severity_sort = false,
+})
