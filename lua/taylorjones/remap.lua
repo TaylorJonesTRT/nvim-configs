@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader>pr", ":Telescope repo list<CR>")
 
 --ToggleTerm
 vim.keymap.set("n", "<leader>tth", ":ToggleTerm direction=horizontal<CR>")
-vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+vim.keymap.set("t", "<esc>", "<C-\\><C-n>", opts)
 
 -- Toggles between lsp-lines and virtual-text
 vim.keymap.set("", "<leader>dt", function()

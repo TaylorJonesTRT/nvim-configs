@@ -18,9 +18,15 @@ return require('packer').startup(function(use)
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-  use({ 'folke/tokyonight.nvim', as = 'Tokyonight' })
+  use('folke/tokyonight.nvim')
+  use{
+      "nobbmaestro/nvim-andromeda",
+      requires = { "tjdevries/colorbuddy.nvim", branch = "dev" },
+      as = "Andromeda"
+  }
+  use{ "catppuccin/nvim", as = "catppuccin" }
 
-  vim.cmd('colorscheme Tokyonight')
+  vim.cmd('colorscheme catppuccin-mocha')
 
   use {
       'nvim-treesitter/nvim-treesitter',
@@ -161,5 +167,52 @@ use({
   })
 
   use('xiyaowong/transparent.nvim')
+
+  use('norcalli/nvim-colorizer.lua')
+
+  use({
+      "glepnir/lspsaga.nvim",
+      opt = true,
+      branch = "main",
+      event = "LspAttach",
+      config = function()
+          require("lspsaga").setup({})
+      end,
+      requires = {
+          {"nvim-tree/nvim-web-devicons"},
+          --Please make sure you install markdown and markdown_inline parser
+          {"nvim-treesitter/nvim-treesitter"}
+      }
+  })
+
+  use {
+    "lewis6991/hover.nvim",
+    config = function()
+        require("hover").setup {
+            init = function()
+                -- Require providers
+                require("hover.providers.lsp")
+                require('hover.providers.gh')
+                require('hover.providers.gh_user')
+                require('hover.providers.jira')
+                require('hover.providers.man')
+                require('hover.providers.dictionary')
+            end,
+            preview_opts = {
+                border = nil
+            },
+            -- Whether the contents of a currently open hover window should be moved
+            -- to a :h preview-window when pressing the hover keymap.
+            preview_window = false,
+            title = true
+        }
+
+        -- Setup keymaps
+        vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
+        vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
+    end
+}
+
+use('nvim-treesitter/nvim-treesitter-context')
 
 end)
