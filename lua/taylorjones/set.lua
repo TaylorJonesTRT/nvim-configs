@@ -34,7 +34,7 @@ vim.o.statusline = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 -- remove virtual_text since I have lsp_lines installed
 vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = true,
     float = true,
 })
 

@@ -43,12 +43,6 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
-  use {
-      'nvim-tree/nvim-tree.lua',
-      requires = {
-          'nvim-tree/nvim-web-devicons', -- optional
-      },
-  }
 
   use {
       'numToStr/Comment.nvim',
@@ -56,11 +50,6 @@ return require('packer').startup(function(use)
           require('Comment').setup()
       end
   }
-  -- use {
-  --     'akinsho/bufferline.nvim',
-  --     tag = '*',
-  --     requires = 'nvim-tree/nvim-web-devicons'
-  -- }
 
   use {
       'VonHeikemen/lsp-zero.nvim',
@@ -85,23 +74,9 @@ return require('packer').startup(function(use)
       }
   }
 
-use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-    require("toggleterm").setup()
-end}
-
 use('RRethy/vim-illuminate')
 
 use("lukas-reineke/indent-blankline.nvim")
-
-use("Shatur/neovim-session-manager")
-
-use {
-    'goolord/alpha-nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
-    end
-}
 
 use('folke/neodev.nvim')
 
@@ -142,18 +117,6 @@ use {
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 }
 
-use {
-    'aaditeynair/conduct.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
-}
-
-use({
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  config = function()
-    require("lsp_lines").setup()
-  end,
-})
-
   use({
       "folke/trouble.nvim",
       config = function()
@@ -169,21 +132,6 @@ use({
   use('xiyaowong/transparent.nvim')
 
   use('norcalli/nvim-colorizer.lua')
-
-  use({
-      "glepnir/lspsaga.nvim",
-      opt = true,
-      branch = "main",
-      event = "LspAttach",
-      config = function()
-          require("lspsaga").setup({})
-      end,
-      requires = {
-          {"nvim-tree/nvim-web-devicons"},
-          --Please make sure you install markdown and markdown_inline parser
-          {"nvim-treesitter/nvim-treesitter"}
-      }
-  })
 
   use {
     "lewis6991/hover.nvim",
@@ -213,6 +161,8 @@ use({
     end
 }
 
-use('nvim-treesitter/nvim-treesitter-context')
+use('andweeb/presence.nvim')
+
+use('christoomey/vim-tmux-navigator')
 
 end)

@@ -40,14 +40,15 @@ end)
 -- pretty much vs code f2 function to rename
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
+-- dunno what this does yet
+-- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 
 --telescope repo search
 vim.keymap.set("n", "<leader>pr", ":Telescope repo list<CR>")
 
 --ToggleTerm
 vim.keymap.set("n", "<leader>tth", ":ToggleTerm direction=horizontal<CR>")
-vim.keymap.set("t", "<esc>", "<C-\\><C-n>", opts)
+vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 
 -- Toggles between lsp-lines and virtual-text
 vim.keymap.set("", "<leader>dt", function()
