@@ -6,11 +6,40 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 
 require('telescope').setup {
+    defaults = {
+        layout_strategy = "vertical",
+        layout_config = nil,
+    },
     extension = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            case_mode = "smart_case",
+        },
         repo = {
             search_dirs = {
                 "~/Development/projects",
                 "~/Development/",
+            },
+        },
+    },
+    pickers = {
+        live_grep = {
+            -- layout_strategy = "vertical",
+            layout_config = {
+                width = 0.9,
+                height = 0.9,
+                preview_cutoff = 1,
+                mirror = false,
+            },
+        },
+        lsp_implementations = {
+            -- layout_strategy = "vertical",
+            layout_config = {
+                width = 0.9,
+                height = 0.9,
+                preview_cutoff = 1,
+                mirror = false,
             },
         },
     },

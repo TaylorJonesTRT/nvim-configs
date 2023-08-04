@@ -38,3 +38,4 @@ vim.diagnostic.config({
     float = true,
 })
 
+vim.notify = require("notify")

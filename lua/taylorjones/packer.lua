@@ -18,15 +18,7 @@ return require('packer').startup(function(use)
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-  use('folke/tokyonight.nvim')
-  use{
-      "nobbmaestro/nvim-andromeda",
-      requires = { "tjdevries/colorbuddy.nvim", branch = "dev" },
-      as = "Andromeda"
-  }
   use{ "catppuccin/nvim", as = "catppuccin" }
-
-  vim.cmd('colorscheme catppuccin-mocha')
 
   use {
       'nvim-treesitter/nvim-treesitter',
@@ -163,6 +155,41 @@ use {
 
 use('andweeb/presence.nvim')
 
-use('christoomey/vim-tmux-navigator')
+use {
+    'numToStr/Navigator.nvim',
+    config = function()
+        require('Navigator').setup()
+    end
+}
+
+use('MunifTanjim/nui.nvim')
+
+use('rcarriga/nvim-notify')
+
+use{
+    'folke/noice.nvim',
+    requires = {
+        'MunifTanjim/nui.nvim',
+        'rcarriga/nvim-notify',
+    }
+}
+
+use {
+    'nvim-neotest/neotest',
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-treesitter/nvim-treesitter',
+        'antoinemadec/FixCursorHold.nvim'
+    }
+}
+
+use {
+    "folke/todo-comments.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    }
+}
+
+use ({ "MaximilianLloyd/tw-values.nvim" })
 
 end)

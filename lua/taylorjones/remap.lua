@@ -7,6 +7,8 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>")
 
 -- Move Commands
+-- Moves selected text up and down keeping indentation in tact with block of
+-- code it will be inside of after the move.
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -58,3 +60,4 @@ vim.keymap.set("", "<leader>dt", function()
             virtual_lines = not config.virtual_lines,
         })
     end, { desc = "Toggle Line Diagnostics" })
+

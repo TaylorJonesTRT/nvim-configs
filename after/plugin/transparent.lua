@@ -3,7 +3,7 @@ require("transparent").setup({
     'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-    'SignColumn', 'CursorLineNr', 'EndOfBuffer', 'NvimTreeNormal'
+    'SignColumn', 'CursorLineNr', 'EndOfBuffer', 'NvimTreeNormal', 'UndotreeNode'
   },
   extra_groups = {
       "NormalFloat",
@@ -11,6 +11,13 @@ require("transparent").setup({
       "NvimTreeNormalFloat",
       "NvimTreeNormalNC",
       "NvimTreeRootFolder",
+      "UndotreeNode",
+      "UndotreeCurrentNode",
+      "UndotreeBranch",
+      "UndotreeSeq",
+      "UndotreeNext",
+      "UndotreeSavedBig",
+      "UndotreeHead",
   }, -- table: additional groups that should be cleared
   exclude_groups = {}, -- table: groups you don't want to clear
 })
