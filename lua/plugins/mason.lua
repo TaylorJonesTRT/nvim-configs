@@ -7,6 +7,9 @@ return {
     ensure_installed = {
       "stylua",
       "shfmt",
+      "codelldb",
+      "js-debug-adapter",
+      -- "flake8",
     },
   },
   ---@param opts MasonSettings | {ensure_installed: string[]}
