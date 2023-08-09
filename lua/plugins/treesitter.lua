@@ -71,7 +71,6 @@ return {
         added[lang] = true
         return true
       end, opts.ensure_installed)
-      vim.list_extend(opts.ensure_installed, { "ron", "rust", "toml", "typescript", "tsx" })
     end
     require("nvim-treesitter.configs").setup(opts)
 
